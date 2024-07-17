@@ -1,15 +1,15 @@
 [Unit]
 Description=EVE Online FozzieSov SSE Pusher
+Requires = fozziesov-sse-pusher.socket
 After=network.target nss-lookup.target
 
 [Service]
 Type=simple
 DynamicUser=true
-Group=www
 ExecStart=/usr/local/bin/fnm --fnm-dir /usr/local/fnm exec node index
 WorkingDirectory=/home/wwwroot/fozziesov-sse-pusher/
-EnvironmentFile=/home/wwwroot/fozziesov-sse-pusher/.env
-RuntimeDirectory=fozziesov-sse
+# EnvironmentFile=/home/wwwroot/fozziesov-sse-pusher/.env
+# RuntimeDirectory=fozziesov-sse
 
 [Install]
 WantedBy=multi-user.target
