@@ -98,9 +98,11 @@ const app = http.createServer((req, res) => {
 
     if (req.url === '/tq') {
         serveTQ(req, res)
-    } else if (req.url === '/sr') {
-        serveSR(req, res)
-    } else {
+    } 
+    // else if (req.url === '/sr') {
+    //     serveSR(req, res)
+    // } 
+    else {
         res.writeHead(404)
         res.end()
     }
@@ -136,28 +138,30 @@ process.on('message', function (msg) {
                 }
             }
         }
-    } else if (msg.type && msg.type === "push-sr") {
-        if (JSON.stringify(latestSR) === JSON.stringify(msg.data)) return;
-        const oldLatest = latestSR;
-        latestSR = msg.data;
-        if (oldLatest) {
-            const d = diff(oldLatest, latestSR);
-            if (d !== null) {
-                for (const stream of streamsSR) {
-                    stream.write({
-                        data: d,
-                        event: "diff",
-                    });
-                }
-            } else {
-                const data = msg.data.map((n) => n.slice(1));
-                for (const stream of streamsSR) {
-                    stream.write({
-                        data,
-                        event: "campaigns",
-                    });
-                }
-            }
-        }
-    }
+    } 
+    // else if (msg.type && msg.type === "push-sr") {
+    //     if (JSON.stringify(latestSR) === JSON.stringify(msg.data)) return;
+    //     const oldLatest = latestSR;
+    //     latestSR = msg.data;
+    //     if (oldLatest) {
+    //         const d = diff(oldLatest, latestSR);
+    //         if (d !== null) {
+    //             for (const stream of streamsSR) {
+    //                 stream.write({
+    //                     data: d,
+    //                     event: "diff",
+    //                 });
+    //             }
+    //         } else {
+    //             const data = msg.data.map((n) => n.slice(1));
+    //             for (const stream of streamsSR) {
+    //                 stream.write({
+    //                     data,
+    //                     event: "campaigns",
+    //                 });
+    //             }
+    //         }
+    //     }
+    // }
 })
+
