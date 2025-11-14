@@ -132,4 +132,5 @@ async function fetchSRSovInfo() {
 // setInterval(() => fetchSRSovInfo().catch(e => console.error(e.message)), 10000);
 
 fetchTQSovInfo()
-fetchSRSovInfo()
+// fetchSRSovInfo()
+
