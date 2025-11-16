@@ -65,7 +65,7 @@ async function fetchTQSovInfo() {
         }
         // console.log(`Received ${campaigns.length} campaigns (TQ)`);
     } catch(e) {
-        console.error(e.message)
+        console.error(e)
     } finally {
         setTimeout(fetchTQSovInfo, 5000)
     }
@@ -133,4 +133,5 @@ async function fetchSRSovInfo() {
 
 fetchTQSovInfo()
 // fetchSRSovInfo()
+
 
